@@ -32,7 +32,8 @@ function Admin() {
             }
             return (
 
-                <div className="wrapper login">
+                <div className=
+                "wrapper login">
                     <div className="container">
                         <div className="col-left">
                             <div className="login-text">
