@@ -3,7 +3,7 @@ import React from 'react';
 
 class  List extends React.Component{
     render(){
-        return(
+        return(    
          
             <div class="container">
         <form id="formEmail" action="">
@@ -18,7 +18,7 @@ class  List extends React.Component{
             </div>
         
 
-           
+        
 
             <div class="line submitline">
                 <button class="button" id="submitBtn">Send</button>

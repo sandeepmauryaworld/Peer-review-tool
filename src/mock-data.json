@@ -1,0 +1,35 @@
+[
+    {
+      
+      "Id":1,
+      "Candidate": "sandeep",
+      "status": "Pending",
+      "email": "tesi@g,ail.com"
+   
+    },
+    {
+      
+      "Id":2,
+      "Candidate": "rohan",
+      "status": "Pending",
+      "email": "sagar@gmail.com"
+   
+    },
+    {
+      "Id": 3,
+      "Candidate": "sandeep",
+      "status": "completed",
+      "email": "test@gmail.com"
+    },
+    {
+      "Id": 4,
+      "Candidate": "srohan",
+      "status": "Pending",
+      "email": "sagar@gmail.com"
+    },
+    {"Id":5,
+        "Candidate": "mohan",
+        "status": "Pending",
+        "email": "nilesh@gmail.com"
+    }
+  ]

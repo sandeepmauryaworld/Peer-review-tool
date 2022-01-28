@@ -1,4 +1,4 @@
-*{
+/* *{
     box-sizing: border-box;
 }
 body{
@@ -170,4 +170,4 @@ body{
 .login .login-form input[type=submit]:hover{
     color: #ffffff;
     box-shadow: inset 250px 0 0 0 #44c7f5;
-}
+} */
