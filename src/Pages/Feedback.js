@@ -1,7 +1,9 @@
-
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react';
+import {useNavigate } from 'react-router-dom'
+// import React, {useEffect, useState} from 'react'
 
 function Feedback() {
+  const history = useNavigate ()
   const [name, setName]= useState();
   const [year, setYear]= useState();
   const [designation, setdesignation]= useState();
@@ -15,9 +17,10 @@ function Feedback() {
 
   function saveUser()
   {
+    history("/listing")
 console.warn(name,year,designation,puncual,productive,dedication,collab,feedback);
 let data={name,year,designation,puncual,productive,dedication,collab,feedback}
-fetch("http://localhost0:4000/Feedback",{
+fetch("localhost:4000/feedbackapi/feedbacks",{
    method:'POST',
    headers:{
        'Accept':'application/json',

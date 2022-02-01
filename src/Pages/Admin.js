@@ -1,8 +1,10 @@
 // import  useHistory  from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import {useNavigate } from 'react-router-dom'
 
 
 function Admin() {
+    const history = useNavigate ()
     const [name, setName] = useState(); 
     const [Email, setEmail] = useState();
     // const history = useHistory();
@@ -12,11 +14,16 @@ function Admin() {
     })
     
        
+    // function Test() {
+
+    //     history("/view")
+    // }
 
             function saveUser() {
+                history("/feedback")
                 console.warn(name, Email);
                 let data = { name, Email }
-                fetch("http://localhost:4000/Admin", {
+                fetch("localhost:8080/api/admin", {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
@@ -25,7 +32,7 @@ function Admin() {
                     body: JSON.stringify(data)
                 }).then((result) => {
                     console.log("result", result);
-                    // history.push("/Feedback")
+                    
                 }
 
                 )
@@ -63,8 +70,11 @@ function Admin() {
                                             placeholder="Password" required />
                                     </p>
                                     <p>
-                                        <input type="submit" onClick={saveUser} value="Sign In" />
+                                        <input type="submit"  onClick={saveUser} value="Sign In" />
+                                        
+                                        
                                     </p>
+
 
 
                                 </form>

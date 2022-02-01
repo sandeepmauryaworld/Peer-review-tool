@@ -7,7 +7,7 @@ function Avp() {
 
 
     <h2 style={{textAlign:"center"}} >Actual Feedback page </h2>
-    <div></div>
+   
      <hr>
 
     <form className="form" >

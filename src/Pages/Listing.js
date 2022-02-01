@@ -145,6 +145,7 @@
 
 
 import React, { useState, Fragment } from "react";
+import {useNavigate } from 'react-router-dom'
 import { nanoid } from "nanoid";
 // import "./App.css";
 import data from "../mock-data.json";
@@ -152,6 +153,16 @@ import ReadOnlyRow from "../components/ReadOnlyRow";
 import EditableRow from "../components/EditableRow";
 
 const Listing = () => {
+
+
+
+  function Test() {
+
+        history("/listing")
+    }
+  const history = useNavigate ()
+
+  
   const [contacts, setContacts] = useState(data);
   const [addFormData, setAddFormData] = useState({
     name: "",
@@ -256,8 +267,11 @@ const Listing = () => {
 
     setContacts(newContacts);
   };
+  
 
   return (
+
+    
     <div className="app-container">
       <form onSubmit={handleEditFormSubmit}>
         <table>
@@ -324,7 +338,10 @@ const Listing = () => {
           placeholder="Enter an email..."
           onChange={handleAddFormChange}
         /> */}
-        <button type="submit">Create  feedback</button>
+        
+        <button type="submit" >Create  feedback</button>
+        {/* <button type="submit" >Create  feedback</button> */}
+        <input type="submit"  onClick={Test} value="Sign In" />
       {/* </form> */}
     </div>
   );
