@@ -47,15 +47,15 @@ function Admin() {
                             <div className="login-form">
                                 <h2> Admin Login</h2>
                                 <form action="">
-                                    <p>
+                                    {/* <p>
                                         <label>Username <span>*</span></label>
                                         <input type="Name" value={name} onChange={(e) => { setName(e.target.value) }}
                                             placeholder="Username" required />
-                                    </p>
+                                    </p> */}
                                     <p>
-                                        <label>email address<span>*</span></label>
+                                        <label>Username or Email<span>*</span></label>
                                         <input type="email" value={Email} onChange={(e) => { setEmail(e.target.value) }}
-                                            placeholder="Email" required />
+                                            placeholder="Email or Username" required />
                                     </p>
                                     <p>
                                         <label>Password<span>*</span></label>
