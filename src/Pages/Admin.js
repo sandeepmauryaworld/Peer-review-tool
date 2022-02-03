@@ -185,7 +185,7 @@ const Admin =()=>{
     const handleSubmit = (e)=>{
         e.preventDefault()
         console.log("submitted form")
-        axios.post('http://localhost' , {
+        axios.post('localhost:8080/api/admin' , {
             email:email,
             password:password
         })

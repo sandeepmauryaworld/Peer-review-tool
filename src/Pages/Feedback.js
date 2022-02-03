@@ -1,44 +1,87 @@
 import React, { useEffect, useState } from 'react';
-import {useNavigate } from 'react-router-dom'
-// import React, {useEffect, useState} from 'react'
+import axios from 'axios'
+import {useNavigate } from 'react-router-dom'   //for navigation
+
 
 function Feedback() {
-  const history = useNavigate ()
-  const [name, setName]= useState();
-  const [year, setYear]= useState();
-  const [designation, setdesignation]= useState();
-  const [puncual, setpuncual]= useState();
-  const [productive, setproductive]= useState();
-  const [dedication, setdedication]= useState();
-  const [collab, setcollab]= useState();
-  const [feedback, setfeedback]= useState();
+  const history = useNavigate ()// for navigation 
+
+  const [name, setName]= useState('');
+  const [year, setYear]= useState('');
+  const [designation, setDesignation]= useState('');
+  const [puncual, setPuncual]= useState('');
+  const [productive, setProductive]= useState('');
+  const [dedication, setDedication]= useState('');
+  const [collab, setCollab]= useState('');
+  const [feedback, setFeedback]= useState('');
   
+  const handleUserName= (e)=>{
+    console.log(e.target.value)
+    setName(e.target.value)
+}
 
+const handleYear= (e)=>{
+  console.log(e.target.value)
+  setYear(e.target.value)
+}
 
-  function saveUser()
-  {
-    history("/listing")
-console.warn(name,year,designation,puncual,productive,dedication,collab,feedback);
-let data={name,year,designation,puncual,productive,dedication,collab,feedback}
-fetch("localhost:4000/feedbackapi/feedbacks",{
-   method:'POST',
-   headers:{
-       'Accept':'application/json',
-       'Content-type':'application/json'
-   },
-   body:JSON.stringify(data)
-  }).then((result)=>{
-      console.log("result",result);
-  }
+const handleDesignation= (e)=>{
+  console.log(e.target.value)
+  setDesignation(e.target.value)
+}
 
-  )
+const handlePuncual= (e)=>{
+  console.log(e.target.value)
+  setPuncual(e.target.value)
+}
+
+const handleProductive= (e)=>{
+  console.log(e.target.value)
+  setProductive(e.target.value)
+}
+
+const handleDedicaion= (e)=>{
+  console.log(e.target.value)
+  setDedication(e.target.value)
+}
+
+const handleCollab= (e)=>{
+  console.log(e.target.value)
+  setCollab(e.target.value)
+}
+
+const handleFeedback= (e)=>{
+  console.log(e.target.value)
+  setFeedback(e.target.value)
+}
+
+const handleSubmit = (e)=>{
+  e.preventDefault()
+  console.log("submitted form")
+  axios.post('localhost:8080/api/feedback' , {
+      name:name,
+      year:year,
+      dedication:dedication,
+      designation:designation,
+      puncual:puncual,
+      collab:collab,
+      productive:productive,
+      feedback:feedback
+  })
+  .then((response)=>{
+      console.log(response.data );
+       
+  })
+  .catch((err )=> {
+      console.log(err)
+      console.log(err.response)
+
+  })
+
 }
 
 
   return (
-
-
-
 
     <div>
     <h2  style={{  "textAlign": "left" }}> FEEDBACK FORM</h2> 
@@ -51,7 +94,7 @@ fetch("localhost:4000/feedbackapi/feedbacks",{
 <label htmlFor="fname">FirstName</label>    
 </div>    
 <div className="col-75">    
-<input type="text" id="fname"  name="firstname" value={name} onChange={ (e)=>{setName(e.target.value)}} placeholder="Your name.."/>    
+<input type="text" id="fname"  name="firstname" value={name} onChange={handleUserName} placeholder="Your name.."/>    
 </div>    
 </div>    
 <div className="row">    
@@ -59,52 +102,45 @@ fetch("localhost:4000/feedbackapi/feedbacks",{
 <label htmlFor="year">year</label>    
 </div>    
 <div className="col-75">    
-<input type="text" id="year" name="year"  value={year} onChange={ (e)=>{setYear(e.target.value)}} placeholder="year."/>    
+<input type="text" id="year" name="year"  value={year} onChange={handleYear} placeholder="year."/>    
 </div>    
 </div>    
-
 
 <div className="row">    
 <div className="col-25">    
 <label htmlFor='designation'>designation</label>    
 </div>    
 <div className="col-75">    
-<input type="text" id="designation" name="designation" value={designation} onChange={ (e)=>{setdesignation(e.target.value)}} placeholder="designation"/>    
+<input type="text" id="designation" name="designation" value={designation} onChange={handleDesignation} placeholder="designation"/>    
 </div>    
 </div> 
-
 
 <div className="row">    
 <div className="col-25">    
 <label htmlFor="puncual">puncual</label>    
 </div>    
 <div className="col-75">    
-<input type="text" id="puncual" name="puncual" value={puncual} onChange={ (e)=>{setpuncual(e.target.value)}} placeholder="puncual"/>    
+<input type="text" id="puncual" name="puncual" value={puncual}  onChange={handlePuncual} placeholder="puncual"/>    
 </div>    
 </div> 
-
-
 
 <div className="row">    
 <div className="col-25">    
 <label htmlFor="productive">productive</label>    
 </div>    
 <div className="col-75">    
-<input type="text" id="productive" name="productive" value={productive} onChange={ (e)=>{setproductive(e.target.value)}} placeholder="productive"/>    
+<input type="text" id="productive" name="productive" value={productive} onChange={handleProductive} placeholder="productive"/>    
 </div>    
 </div>
-
-
 
 <div className="row">    
 <div className="col-25">    
 <label htmlFor="dedication">dedication</label>    
 </div>    
 <div className="col-75">    
-<input type="text" id="dedication" name="dedication" value={dedication} onChange={ (e)=>{setdedication(e.target.value)}} placeholder="dedication"/>    
+<input type="text" id="dedication" name="dedication" value={dedication} onChange={handleDedicaion} placeholder="dedication"/>    
 </div>    
 </div>
-
 
 
 <div className="row">    
@@ -112,15 +148,12 @@ fetch("localhost:4000/feedbackapi/feedbacks",{
 <label htmlFor="collab">collabration</label>    
 </div>    
 <div className="col-75">    
-<input type="text" id="collab" name="collab" value={collab} onChange={ (e)=>{setcollab(e.target.value)}} placeholder="collab"/>    
+<input type="text" id="collab" name="collab" value={collab} onChange={handleCollab} placeholder="collab"/>    
 </div>    
 </div>
 
 
-
-
 <div className="row">    
-
 
 </div>    
 <div className="row">    
@@ -128,11 +161,12 @@ fetch("localhost:4000/feedbackapi/feedbacks",{
 <label htmlFor="feed_back">FeedBack</label>    
 </div>    
 <div className="col-75">    
-<textarea id="subject" name="subject" value={feedback} onChange={ (e)=>{setfeedback(e.target.value)}} placeholder="Write something.." ></textarea>    
+<textarea id="subject" name="subject" value={feedback} onChange={handleFeedback} placeholder="Write something.." ></textarea>    
 </div>    
 </div>    
 <div className="row">   
-<input type="submit" onClick={saveUser} value="Submit"/>    
+
+<input type="submit" value="Submit" />
 
 </div> 
  
@@ -140,15 +174,8 @@ fetch("localhost:4000/feedbackapi/feedbacks",{
 </div>
     
 </div>
-        
-
-
 
 )
 }
-
-
-    
- 
 
 export default Feedback
