@@ -3,8 +3,8 @@ import axios from 'axios'
 import {useNavigate } from 'react-router-dom'   //for navigation
 
 
-function Feedback() {
-  const history = useNavigate ()// for navigation 
+const Feedback =()=>{
+  const navigate= useNavigate ()// for navigation 
 
   const [name, setName]= useState('');
   const [year, setYear]= useState('');
@@ -58,7 +58,7 @@ const handleFeedback= (e)=>{
 const handleSubmit = (e)=>{
   e.preventDefault()
   console.log("submitted form")
-  axios.post('localhost:8080/api/feedback' , {
+  axios.post('localhost:8080/api/feedback ' , {
       name:name,
       year:year,
       dedication:dedication,
@@ -77,6 +77,8 @@ const handleSubmit = (e)=>{
       console.log(err.response)
 
   })
+
+  navigate("listing/")
 
 }
 
@@ -166,6 +168,7 @@ const handleSubmit = (e)=>{
 </div>    
 <div className="row">   
 
+{/* <input type="submit" value="Submit" /> */}
 <input type="submit" value="Submit" />
 
 </div> 
